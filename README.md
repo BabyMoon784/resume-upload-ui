@@ -1,28 +1,21 @@
-# Upload Your Resume
+# Upload Your Resume · 简历上传页
 
-按「前端工程师（实习）」Figma 画板制作的简历上传页面。采用 HTML、CSS 和原生 JavaScript，所有资源均使用相对路径。
+**[打开在线演示 ↗](https://babymoon784.github.io/resume-upload-ui/)** · [查看 Figma 原稿](https://www.figma.com/design/D0jjN7Twkq0DGm3ZJvQabz/?node-id=0-1)
 
-[原设计稿](https://www.figma.com/design/D0jjN7Twkq0DGm3ZJvQabz/?node-id=0-1)
+点击「打开在线演示」即可体验。把一份 PDF 拖进浅蓝色上传区，点击 **Preview file** 可预览简历。缩窄浏览器窗口，可以看到蓝猫随布局移动，上传卡片切换到介绍文字下方。文件仅在当前浏览器中处理。
 
-## 本地预览
+[![桌面预览：左侧为蓝猫插画，右侧为简历上传卡片](docs/desktop.png)](https://babymoon784.github.io/resume-upload-ui/)
 
-直接打开 `index.html`，或在项目目录运行 `python -m http.server 8000` 并访问 `http://localhost:8000`。
+## 离线查看
 
-## 功能
+- **只下载一个文件**：打开[独立离线版](https://github.com/BabyMoon784/resume-upload-ui/blob/main/docs/resume-upload-offline.html)，点击 GitHub 文件页右上方的 **Download raw file**（下载图标），保存后双击即可。这个文件已内嵌样式、脚本和蓝猫插画。
+- **查看完整源码**：下载[完整项目 ZIP](https://github.com/BabyMoon784/resume-upload-ui/archive/refs/heads/main.zip)，解压整个压缩包，再打开项目根目录的 `index.html`。**根目录的 `index.html` 依赖同目录下的 `styles.css`、`app.js` 和 `assets/`。单独下载它会丢失样式、插画和交互。**
 
-- 选定文件后可以按 Preview file 在本地查看 PDF、PNG、JPEG、WebP、GIF 或纯文本。PDF 使用浏览器自带阅读器，支持新标签页查看。纯文本最多展示前 256 KB。Word 等其他文件仍可选择，预览窗口会提示格式限制。按 Esc 或 Close 关闭预览。
-- 桌面上，插画跟随标题排版，按可用宽度与高度等比缩放。窄屏上，插画移到介绍文字右侧，上传卡片排在下方。拖入文件时插画会轻微抬起，开启减少动态效果时则保持静止。
+## 实现与交互
 
-- 点击上传区或通过键盘选择文件，也可拖入一份简历。选定后显示文件名，再次选择可以替换。一次拖入多个文件会得到提示。
-- 按钮具有悬停、按下和键盘焦点状态。屏幕宽度不超过 760px 时，介绍和上传卡片改为上下排列。
-- 原稿只提供了上传这一步。Last step 返回简短的上一步说明，Next step 返回上传页并保留选择。Finish 支持带文件或跳过文件完成，结果可以返回修改。
-- 简历仅保存在当前页面的内存中，刷新后清空。演示不会向服务器发送文件，也不会调用简历解析服务。
+页面采用 HTML、CSS 和原生 JavaScript 实现，无需安装依赖或执行构建。
 
-## 文件
-
-`index.html` 定义语义结构，`styles.css` 负责布局和外观，`app.js` 处理交互。`assets/resume-cat.jpg` 为题目原画板中的装饰插画，表单、按钮和步骤条均由网页元素实现。
-
-## GitHub 提交
-
-把本目录的内容放在仓库根目录，保持 `index.html` 与 `assets/` 的相对位置。笔试提交仓库链接。如需在线预览，可从 GitHub Pages 发布仓库根目录，并将预览地址附在仓库说明中。
-
+- 点击、键盘选择或拖放均可添加简历。选中后显示文件名，再选一次即可替换。一次拖入多个文件时会提示选择一份。
+- PDF、常见图片和纯文本支持本地预览，按 Esc 或 Close 可关闭。Word 文件可选择并显示文件名。
+- 桌面采用双栏布局，宽度不超过 760px 时改为上下排列。按钮支持悬停、按下和键盘焦点状态。
+- Last step 可返回上一步说明，返回上传页后会保留已选文件。Finish 可带文件完成，也可跳过上传。
